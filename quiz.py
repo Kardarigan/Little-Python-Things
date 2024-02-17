@@ -1,13 +1,13 @@
-questions = ("How many elements are in the periodic table?: ",
-            "Which animal lays the largest eggs?: ",
-            "What is the most abundant gas in Earth's atmosphere?: ",
-            "How many bones are in the human body?: ",
+questions = ("How many planets are in our solar system?: ",
+            "On which planet, if any, is a day longer than a year?: ",
+            "What is the name of the Mars-sized object that collided with Earth?: ",
+            "How long does it take for light to travel from the Sun’s core to the surface?: ",
             "Which planet in the solar system is the hottest?: ")
 
-options = (("A. 116", "B. 117", "C. 118", "D. 119"),
-           ("A. Whale", "B. Crocodile", "C. Elephant", "D. Ostrich"),
-           ("A. Nitrogen", "B. Oxygen", "C. Carbon-Dioxide", "D. Hydrogen"),
-           ("A. 206", "B. 207", "C. 208", "D. 209"),
+options = (("A. 7", "B. 8", "C. 9", "D. 10"),
+           ("A. Mercury", "B. Venus", "C. Jupiter", "D. None"),
+           ("A. Planet X", "B. Mars", "C. Theia", "D. Gaia"),
+           ("A. 40,000 years", "B. 400,000 years", "C. 10,000 years", "D. 100,000 years"),
            ("A. Mercury", "B. Venus", "C. Earth", "D. Mars"))
 
 answers = ("C", "D", "A", "A", "B")
@@ -16,7 +16,7 @@ score = 0
 question_num= 0
 
 for question in questions:
-    print("-------------------")
+    print("---------------------")
     print(question)
     for option in options[question_num]:
         print(option)
@@ -31,3 +31,10 @@ for question in questions:
         print(f"{answers[question_num]} is the correct answer")
 
     question_num += 1
+
+print(f"""
+---------------------
+GAME OVER! \o/\n
+Your Score ---> {score}
+---------------------
+""")
