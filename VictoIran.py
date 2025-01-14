@@ -4,7 +4,7 @@ money = 5
 oil = 6000
 soldier = 240
 allied_soldier = 1300 + 1228 + 200 + 240 + 300
-allied_countries = ["Russia", "China", "South korea", "Turkey", "Japan"]
+allied_countries = ["Russia", "China", "North korea", "Turkey", "Japan"]
 rocket = 11
 tank = 10
 spy = 0
@@ -290,7 +290,7 @@ while not confirm:
         elif war[1].capitalize() == "Turkey":
             enemy = 240
             a = False
-        elif war[1].capitalize() == "Republic of korea" or "North korea":
+        elif war[1].capitalize() == "Republic of korea" or "South korea":
             enemy = 100
             a = False
         elif war[1].capitalize() == "Vietnam":

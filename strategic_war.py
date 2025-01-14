@@ -5,7 +5,20 @@ rocket = 0
 spy = 0
 orders = ['attack' , 'defense' , 'buy soldiers' , 'sell soldiers' , 'buy rocket' , 'use rocket' , 'buy spy' , 'use spy' , 'peace']
 raid = True
-while enemies and soldiers and raid:
+
+while raid:
+    
+    print ('soldiers')
+    print (soldiers)
+    print ('enemies')
+    print (enemies)
+    print ('coin')
+    print (coin)
+    print ('rocket')
+    print (rocket)
+    print ('spy')
+    print (spy)
+
     print (orders)
     dastoor = input('What order do you have?')
     if dastoor == 'attack':
@@ -23,14 +36,14 @@ while enemies and soldiers and raid:
     
     if dastoor == 'defense':
         if enemies == soldiers:
-            enemies-=10
+            enemies-=5
             
         elif enemies > soldiers:
-            soldiers -=10
-            enemies -=10
+            soldiers -=5
+            enemies -=5
 
         elif enemies < soldiers:
-            enemies -= 20
+            enemies -= 10
 
     if dastoor == 'buy soldiers' and coin > 0:
         coin-=1
@@ -57,25 +70,15 @@ while enemies and soldiers and raid:
         enemies-=30
 
     if dastoor == 'peace' and enemies == soldiers:
-        print ('war is done')
-        raid = False
-    else:
-        print('enemy refused our peace request!')
+        if enemies == soldiers:
+            print ('the war is done')
+            raid = False
+        else:
+            print('enemy refused our peace request!')
 
     if coin == 0:
         print ("we haven/'t got any coin _ tap enter to continue")
 
-    
-    print ('soldiers')
-    print (soldiers)
-    print ('enemies')
-    print (enemies)
-    print ('coin')
-    print (coin)
-    print ('rocket')
-    print (rocket)
-    print ('spy')
-    print (spy)
 
 
     if enemies < 1:
@@ -86,3 +89,6 @@ while enemies and soldiers and raid:
 
     elif soldiers < 1:
         print('we loss!.')
+        raid = False
+
+print('game over')

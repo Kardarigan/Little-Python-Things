@@ -1,5 +1,3 @@
-e = True
-
 def start_game():
     print("Welcome to the Martian story gameeee!")
     print("You are an alien from MARS.")
@@ -7,7 +5,7 @@ def start_game():
     first_choice()
 
 def first_choice():
-    print("\n You are the only one left on MARS, the rest of your friends have migrated to JUPITER.")
+    print("\nYou are the only one left on MARS, the rest of your friends have migrated to JUPITER.")
     print("You have only 2 ways: ")
     print("1. Go to JUPITER like your friends. ")
     print("2. Go to the Earth and taking revenge on humans. ")
@@ -40,7 +38,7 @@ def Go_to_JUPITER():
         Go_to_JUPITER()
 
 def Go_to_EARTH():
-    print("\n You go to the EARTH. ")
+    print("\nYou go to the EARTH. ")
     print("And you realize that you can't do anything alone!")
     print("what do you want to do? ")
     print("1. You go to JUPITER and come back with your friends.")
@@ -57,16 +55,14 @@ def Go_to_EARTH():
         stay_on_EARTH()
 
 def Do_not_go():
-    print("\n You don't go and your friend gets worse. ")
+    print("\nYou don't go and your friend gets worse. ")
     print("But luckily, doctors discover a cure for this disease and your friend survive.")
     end_game()
-    
 
 def Return_to_MARS():
     print("You return to the MARS for your friend and after all the problems you managed to find the plant.")
     print("You go back to JUPITER and give the plant to your friend and she is savsd for you!")
-    end_game
-    
+    end_game()
 
 def go_back_with_friends():
     print("You return to EARTH eith an army of Martians and take your revenge on humans.")
@@ -88,8 +84,7 @@ def go_back_with_friends():
 def stay_on_EARTH():
     print("\nYou stay on EARTH and seeing the behavior of humans with the EARTH.")
     print("You decide to leave human alone because they are destroying the EARTH by their own behavior.")
-    end_game
-
+    end_game()
 
 def kill_human():
     print("Now human want to take revenge on the Martians...")
@@ -98,7 +93,6 @@ def kill_human():
 def take_human_to_MARS():
     print("You take human to MARS to clean it up and they come back to EARTH after that.")
     end_game()
-
 
 # end of the game 
 def end_game():
@@ -114,8 +108,7 @@ def end_game():
        return True
 
 
-while e:
+while True:
     start_game()
     if end_game():
-        e = False
-    
+        break

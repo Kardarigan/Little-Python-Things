@@ -1,34 +1,47 @@
+import random
 import os 
-a, b, c = ['-', '-', '-', ], ['-', '-', '-'], ['-', '-', '-'] 
+a, b, c = ['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-'] 
 
-def insert(a, b, c, turn, pos): 
+def insert(a, b, c, sign, pos): 
     if 1 <= pos <= 3: 
-        a[pos - 1] = turn 
+        a[pos - 1] = sign 
     elif 4 <= pos <= 6: 
-        b[pos - 4] = turn 
+        b[pos - 4] = sign 
     elif 7 <= pos <= 9: 
-        c[pos - 7] = turn 
+        c[pos - 7] = sign 
     return a, b, c 
 
-def check_win(a, b, c, turn): 
+def validation(pos):
+    if 1 <= pos <= 3:
+        if a[pos - 1] != '-':
+            return False
+    elif 4 <= pos <= 6: 
+        if b[pos - 4] != '-':
+            return False
+    elif 7 <= pos <= 9: 
+        if c[pos - 7] != '-':
+            return False
+    return True
+
+def check_win(a, b, c, sign): 
 # rows 
-    if a[0] == turn and a[1] == turn and a[2] == turn: 
+    if a[0] == sign and a[1] == sign and a[2] == sign: 
         return True 
-    elif b[0] == turn and b[1] == turn and b[2] == turn: 
+    elif b[0] == sign and b[1] == sign and b[2] == sign: 
         return True 
-    elif c[0] == turn and c[1] == turn and c[2] == turn: 
+    elif c[0] == sign and c[1] == sign and c[2] == sign: 
         return True 
 # columns 
-    elif a[0] == turn and b[0] == turn and c[0] == turn: 
+    elif a[0] == sign and b[0] == sign and c[0] == sign: 
         return True 
-    elif a[1] == turn and b[1] == turn and c[1] == turn: 
+    elif a[1] == sign and b[1] == sign and c[1] == sign: 
         return True 
-    elif a[2] == turn and b[2] == turn and c[2] == turn: 
+    elif a[2] == sign and b[2] == sign and c[2] == sign: 
         return True 
 # diagonal 
-    elif a[0] == turn and b[1] == turn and c[2] == turn: 
+    elif a[0] == sign and b[1] == sign and c[2] == sign: 
         return True 
-    elif a[2] == turn and b[1] == turn and c[0] == turn: 
+    elif a[2] == sign and b[1] == sign and c[0] == sign: 
         return True 
     return False
 
@@ -37,7 +50,7 @@ def is_finished(a, b, c, result):
         return True
         
     elif b[0] != '-' and b[1] != '-' and b[2] != '-' and a[0] != '-' and a[1] != '-' and a[2] != '-' and c[0] != '-' and c[1] != '-' and c[2] != '-': 
-        return True 
+        return True
     
     return False 
 
@@ -45,7 +58,7 @@ def make_row(r):
     row = '| ' + r[0] + ' | ' + r[1] + ' | ' + r[2] + ' |'
     return row 
 
-def print_board(a, b, c):
+def make_table(a, b, c):
     row_a = make_row(a) 
     row_b = make_row(b) 
     row_c = make_row(c) 
@@ -56,31 +69,36 @@ def print_board(a, b, c):
 ended = False 
 
 while not is_finished(a, b, c, ended): 
-    print_board(a, b, c) 
+    make_table(a, b, c) 
     command = input("enter your sign and number: ") 
     params = command.split() 
-    turn = params[0] 
+    sign = params[0] 
     pos = int(params[1])
-    a, b, c = insert(a, b, c, turn, pos) 
-
-    if check_win(a, b, c, turn): 
-        print_board(a, b, c) 
-        print(turn + ' is the winner!') 
+    a, b, c = insert(a, b, c, sign, pos) 
+    cpos = random.randint(1, 9)
+    while not validation(cpos):
+        cpos = random.randint(1, 9)
+    a, b, c = insert(a, b, c, 'x', cpos)
+      
+    
+    if check_win(a, b, c, sign): 
+        make_table(a, b, c) 
+        print(sign + ' is our winner!') 
         ended = True 
         
 if not ended: 
-    print_board(a, b, c) 
+    make_table(a, b, c) 
     print('draw')
 
 
 
-# print_board(a, b, c)
+# make_table(a, b, c)
 # pos = int(input("Enter the pos (1-9): "))
-# a, b, c = insert(a, b, c, turn, pos)
+# a, b, c = insert(a, b, c, sign, pos)
 
-# if check_win(a, b, c, turn):
-#     print_board(a, b, c)
-#     print(turn + ' is the winner!')
+# if check_win(a, b, c, sign):
+#     make_table(a, b, c)
+#     print(sign + ' is the winner!')
 #     ended = True
 # else:
-#     turn = 'O' if turn == 'X' else 'X' 🐱‍💻
+#     sign = 'O' if sign == 'X' else 'X' 🐱‍💻

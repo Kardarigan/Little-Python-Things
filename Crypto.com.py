@@ -35,8 +35,6 @@ turtle.goto(95, 105)
 turtle.right(60)
 rec(80)
 
-
-
 turtle.goto(20, 105)
 turtle.left(120)
 
