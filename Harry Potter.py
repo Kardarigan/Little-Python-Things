@@ -311,5 +311,3 @@ def end():
     
 while S:
     start()
-    if end():
-        S = False
